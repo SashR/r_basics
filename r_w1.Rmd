@@ -33,3 +33,33 @@ y<-10:13
 cbind(x, y)
 rbind(x, y)
 ```
+
+
+### Factors
+Factors are a special type of vector that is used to represent categorical 
+data.
+Factors can be unordered or ordered. 
+One can think of a factor as an int value where each value has a label.
+- Factors are treated specially by modelling functions like lm() and glm()
+- Using factors with labels is better than using integers because factors
+are self describing; having a variable that has value "Male" or "Female"
+is better than having a variable that has values 1 or 2.
+
+created via factor fn, by passing a character vector. table fn can give
+us a frequeny count of results. unclass fn strips out the class (text).
+attr fn can be used to find the levels options.
+
+```{r factors}
+x <- factor(c("yes", "no", "yes", "yes", "yes"))
+table(x)
+unclass(x)
+attr(x,"levels")
+```
+
+The order of the levels can be set using the levels argument to factors.
+This can be important in linear modelling because the first level is used as
+the baseline level. Default is alphabetical
+```{r}
+ x <- factor(c(c("yes", "no", "yes")), levels = c("yes", "no"))
+```
+
