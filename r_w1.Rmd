@@ -13,7 +13,23 @@ knitr::opts_chunk$set(echo = TRUE)
 ### data types -- Matrices
 Matrices are vectors with a dimension attribute. The dimension attribute
 is itself an integer vector (nrow, ncol)
+Matrices can be created via the matrix function.Values can be instantiated here,
+they are inserted by column first
+
+A matrix can also be created by creating the dimension attribute on a vector.
+We saying we want to change this vector into a matrix of n cols and m rows.
 
 ```
-m <- matrix(nrow = 2, ncol = 4)
+m <- matrix(start:end,nrow = 2, ncol = 4)
+
+m <- 1:6
+dim(m) <- c(2,3)
+```
+
+Another way to create a matrix is by binding cols/rows via cbind/rbind
+```
+x<-3:5
+y<-10:13
+cbind(x, y)
+rbind(x, y)
 ```
