@@ -13,7 +13,7 @@
 
 <meta name="date" content="2022-05-27" />
 
-<title>notes_w1</title>
+<title>jhu2w1p2</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -363,82 +363,15 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">notes_w1</h1>
+<h1 class="title toc-ignore">jhu2w1p2</h1>
 <h4 class="author">Sashin</h4>
 <h4 class="date">2022-05-27</h4>
 
 </div>
 
 
-<div id="week-1" class="section level2">
-<h2>Week 1</h2>
-<div id="data-types-matrices" class="section level3">
-<h3>data types – Matrices</h3>
-<p>Matrices are vectors with a dimension attribute. The dimension
-attribute is itself an integer vector (nrow, ncol) Matrices can be
-created via the matrix function.Values can be instantiated here, they
-are inserted by column first</p>
-<p>A matrix can also be created by creating the dimension attribute on a
-vector. We saying we want to change this vector into a matrix of n cols
-and m rows.</p>
-<pre><code>m &lt;- matrix(start:end,nrow = 2, ncol = 4)
-
-m &lt;- 1:6
-dim(m) &lt;- c(2,3)</code></pre>
-<p>Another way to create a matrix is by binding cols/rows via
-cbind/rbind</p>
-<pre><code>x&lt;-3:5
-y&lt;-10:13
-cbind(x, y)
-rbind(x, y)</code></pre>
-</div>
-<div id="factors" class="section level3">
-<h3>Factors</h3>
-<p>Factors are a special type of vector that is used to represent
-categorical data. Factors can be unordered or ordered. One can think of
-a factor as an int value where each value has a label. - Factors are
-treated specially by modelling functions like lm() and glm() - Using
-factors with labels is better than using integers because factors are
-self describing; having a variable that has value “Male” or “Female” is
-better than having a variable that has values 1 or 2.</p>
-<p>created via factor fn, by passing a character vector. table fn can
-give us a frequeny count of results. unclass fn strips out the class
-(text). attr fn can be used to find the levels options.</p>
-<pre class="r"><code>x &lt;- factor(c(&quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;yes&quot;))
-table(x)</code></pre>
-<pre><code>## x
-##  no yes 
-##   1   4</code></pre>
-<pre class="r"><code>unclass(x)</code></pre>
-<pre><code>## [1] 2 1 2 2 2
-## attr(,&quot;levels&quot;)
-## [1] &quot;no&quot;  &quot;yes&quot;</code></pre>
-<pre class="r"><code>attr(x,&quot;levels&quot;)</code></pre>
-<pre><code>## [1] &quot;no&quot;  &quot;yes&quot;</code></pre>
-<p>The order of the levels can be set using the levels argument to
-factors. This can be important in linear modelling because the first
-level is used as the baseline level. Default is alphabetical</p>
-<pre class="r"><code> x &lt;- factor(c(c(&quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;)), levels = c(&quot;yes&quot;, &quot;no&quot;))</code></pre>
-</div>
-<div id="missing-values" class="section level3">
-<h3>Missing values</h3>
-<p>Missing values are a special type of object in R, and are denoted by
-either Na(all other objects) or NaN(undefined math objects) for
-undefined mathematical operators - is.na() and is.nan() are used to test
-objects. Both return a logical vector - Na values have a class also, so
-there character Na, integer Na, etc - A NaN value is also Na, but the
-inverse is not true</p>
-<pre class="r"><code>x &lt;- c(1, 2, NA, 10, 3)
-is.na(x)</code></pre>
-<pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
-<pre class="r"><code>is.nan(x)</code></pre>
-<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE</code></pre>
-<pre class="r"><code>x &lt;- c(2, 2, NA, NaN, 4)
-is.na(x)</code></pre>
-<pre><code>## [1] FALSE FALSE  TRUE  TRUE FALSE</code></pre>
-<pre class="r"><code>is.nan(x)</code></pre>
-<pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE</code></pre>
-</div>
+<div id="week-1-p2" class="section level2">
+<h2>Week 1 (p2)</h2>
 </div>
 
 

@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Week 1
+## Week 1 (p1)
 ### data types -- Matrices
 Matrices are vectors with a dimension attribute. The dimension attribute
 is itself an integer vector (nrow, ncol)
@@ -61,5 +61,22 @@ This can be important in linear modelling because the first level is used as
 the baseline level. Default is alphabetical
 ```{r}
  x <- factor(c(c("yes", "no", "yes")), levels = c("yes", "no"))
+```
+
+### Missing values
+Missing values are a special type of object in R, and are denoted by either
+Na(all other objects) or NaN(undefined math objects) for undefined mathematical operators
+- is.na() and is.nan() are used to test objects. Both return a logical vector
+- Na values have a class also, so there character Na, integer Na, etc
+- A NaN value is also Na, but the inverse is not true
+
+
+```{r}
+x <- c(1, 2, NA, 10, 3)
+is.na(x)
+is.nan(x)
+x <- c(2, 2, NA, NaN, 4)
+is.na(x)
+is.nan(x)
 ```
 
