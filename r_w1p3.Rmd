@@ -45,7 +45,42 @@ data <- read.csv("foo.txt")
 ```
 
 R will automatically:
-- skip lines that begin with #
-- figure out how many rows there are (and how much memory needs to be allocated)
-- figure out the type of variable in each column of the table (Telling r these things directly makes R run faster and more efficiently)
-- read.csv is identical to read.table except that default seperator is a comma, for read.table it is a space
+
+* skip lines that begin with #
+* figure out how many rows there are (and how much memory needs to be allocated)
+* figure out the type of variable in each column of the table (Telling r these things directly makes R run faster and more efficiently)
+* read.csv is identical to read.table except that default seperator is a comma, for read.table it is a space
+
+
+
+### Reading in Larger dataset
+Doing the following stuff will make your life easier and will prevent R from choking
+
+* Read the help pages for read.table, which contain many hints
+* Make a rough calculation of the memory required to store your dataset. If the dataset is larger than the amount of RAM on your computer, you can propably stop right here.
+* Set comment.char = "" if there are no comments lines in your file
+* Use the colClasses argument. Specifying thsi option instead of using the default can make 'read.table' run MUCH faster, often twice as fast. In order to use this option, you have to know the class of each column in your data frame. If all of the columns are numeric for example, you can just set colClasses = "numeric". A quick dirty way to figure out the classes of each column is the following:
+
+```{r}
+#init <- read.table("datatable.txt", nrows = 100)  # read first subset of rows
+#classes <= apply(initial, class) # find the class of each column
+#tabAll <- read.table("datatable.txt", colClasses = classes) # use the classes
+```
+* Set nrows. This doesnt make R run faster but it helps with memory usage. A mild overestimate is okay. You can use the Unix wc to calculate the number of lines in a file.
+
+In general when you are using R which large datasets, its useful to know a few things about you system:
+
+* How much memory (RAM) is available?
+* What other apps are in use?
+* Are there any other users logged in to the same system?
+* What OS?
+* Is the OS 32 or 64 bit?
+
+#### *Calculating Memory Requirements*
+I have a data frame with 1500000 rows and 120 columns, all of which are numeric data. Roughly, how much memory is required to store this data frame?
+  1500000 x  120 x 8 bytes/numeric
+  = 14400000000 bytes
+  = 14400000000 / 2^20 bytes/MB
+  = 1373.29 MB
+  = 1.34 GB
+Rule of thumb is you need twice as much memory. Equivalent for processing purposes.
