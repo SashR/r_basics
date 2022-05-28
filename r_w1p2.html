@@ -11,7 +11,7 @@
 
 <meta name="author" content="Sashin" />
 
-<meta name="date" content="2022-05-27" />
+<meta name="date" content="2022-05-28" />
 
 <title>jhu2w1p2</title>
 
@@ -365,13 +365,38 @@ pre code {
 
 <h1 class="title toc-ignore">jhu2w1p2</h1>
 <h4 class="author">Sashin</h4>
-<h4 class="date">2022-05-27</h4>
+<h4 class="date">2022-05-28</h4>
 
 </div>
 
 
 <div id="week-1-p2" class="section level2">
 <h2>Week 1 (p2)</h2>
+<div id="data-frames" class="section level3">
+<h3>Data Frames</h3>
+<p>This is a key data type in R. It is used to store tabular data.It is
+very important - They are represented as a special type of list, where
+every element of the list has to have the same length - Each element of
+the list can be thought of as a column and the length of the list is the
+number of rows. - Unlike matrices, data frames can store different
+classes of objects in each column (like lists) (matrices must have every
+element be the same class) - Data Frames also have a special attribute
+called row.names - Data Frames are usually created by called
+read.table() or read.csv() - Can be converted to a matrix by calling
+data.matrix()</p>
+<pre class="r"><code>df &lt;- data.frame(foo = 1:4, bar = c(T,T,F,F))
+df</code></pre>
+<pre><code>##   foo   bar
+## 1   1  TRUE
+## 2   2  TRUE
+## 3   3 FALSE
+## 4   4 FALSE</code></pre>
+<pre class="r"><code>nrow(df)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>ncol(df)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<p>No row names specified</p>
+</div>
 </div>
 
 

@@ -10,4 +10,24 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Week 1 (p2)
+### Data Frames
+This is a key data type in R. It is used to store tabular data.It is very
+important
+- They are represented as a special type of list, where every element of the
+list has to have the same length
+- Each element of the list can be thought of as a column and the length
+of the list is the number of rows.
+- Unlike matrices, data frames can store different classes of objects in each
+column (like lists) (matrices must have every element be the same class)
+- Data Frames also have a special attribute called row.names
+- Data Frames are usually created by called read.table() or read.csv()
+- Can be converted to a matrix by calling data.matrix()
+
+```{r data frame}
+df <- data.frame(foo = 1:4, bar = c(T,T,F,F))
+df
+nrow(df)
+ncol(df)
+```
+No row names specified
 
