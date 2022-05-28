@@ -1,0 +1,4 @@
+test,A,B,C
+1,F,T,T
+2,T,F,F
+3,F,T,F

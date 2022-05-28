@@ -1,0 +1,51 @@
+---
+title: "jh2w1p3"
+author: "Sashin"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Week 1 (P3) (Reading data)
+### Reading tablular data
+There are few principle functions for reading data into R:
+- read.table, read.csv for reading tabular data from text files, into a dataframe
+- readLines for reading lines of a text file
+- source, for reading in R code files (inverse of dump)
+- dget, for reading in R code files (inverse of dput)
+- load, for reading in saved workspaces
+- unserialize, for reading single R objects in binary form
+
+The analogues functions for writing data to files are:
+- write.table
+- writeLines
+- dump
+- dput
+- save
+- serialize
+
+### Reading data files with read.table
+This is one of the most commonly used functions for reading data.
+It has a few important arguments:
+- file, the name of the file, or a connection
+- header, logical indicating if the file has a header line
+- sep, a string indicating how the columns are seperated
+- colClasses, a character vector indicating the classes of each column in the dataset
+- nrows, the number of rows in the dataset
+- comment.char, a character string indicating the comment character (default is #)
+- skip, the number of lines to skip from the beginning
+- stringAsFactors, should character variables be coded as factors.
+
+For small ad moderately sized datasets, you can usually call read.table without specifying any other arguments
+```{r}
+data <- read.csv("foo.txt")
+```
+
+R will automatically:
+- skip lines that begin with #
+- figure out how many rows there are (and how much memory needs to be allocated)
+- figure out the type of variable in each column of the table (Telling r these things directly makes R run faster and more efficiently)
+- read.csv is identical to read.table except that default seperator is a comma, for read.table it is a space
