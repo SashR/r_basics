@@ -1,0 +1,45 @@
+---
+title: "jh2w1p4"
+output: html_document
+date: '2022-05-30'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## week 1 (p4)
+### Textuak Data Formats
+
+* *dumping* and *dputing* are useful because the resulting textual format is editable, and in the case of corruption, potentially recoverable.
+* Unlike writing out a table or csv file, *dump* or *dput* preserve *metadata* (sacrificing some readability), so that another user doesn't have to specify it all over again.
+* Textual formats can work much better with version control programs like subversion/git which can only track changes meaningfully in text files.
+* Textual formats can be longer-lived, i.e. if there is corruption somewhere in the file, it can be easier to fix the problem.
+* Textual formats adhere to the *Unix Philosophy*
+* A downside is that the format is not very space-efficient
+* Corresponding reading functions are *source* and *dget*
+
+### dput-ting R Objects
+Another way to pass data is by deparsing the R object with *dput* and reading it back in using *dget*:
+
+```{r}
+y <- data.frame(a= 1, b="a")
+dput(y)
+dput(y, file = "y.R")
+new.y <- dget("y.R")
+new.y
+```
+
+### Dumping R objects
+Multiple objects can be deparsed using the *dump* function and read back in via *source*:
+
+```{r}
+x <- "foo"
+z <- data.frame(a= 1, b="a")
+dump(c("x","z"), file = "data.R")
+rm(x,z)
+source("data.R")
+z
+x
+```
+
