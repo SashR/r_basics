@@ -68,7 +68,7 @@ v2 <- c(1, 2, NA, 4, NA, 5)
 v2
 v3 <- c("a", "b", NA, "d", NA, NA)
 v3
-good <- complete.cases(v2, v3) # whcich positions for both vectors are non-missing
+good <- complete.cases(v2, v3) # which positions for both vectors are non-missing
 good
 v2[good]
 v3[good]

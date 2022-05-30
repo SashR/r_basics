@@ -1,0 +1,62 @@
+---
+title: "jhu2w1p6"
+output: html_document
+date: '2022-05-30'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## week 1 (part 6)
+### Vectorized operations
+
+Many operations in R are *vectorized*, making code more efficient, concise, and easier to read:
+```{r}
+x <- 1:4; y<- 6:9
+x
+y
+x+y
+x>2
+x>=2
+x=8
+x*y
+x/y
+```
+
+Allows for easily doing vector addition, division, multiplacation. Can also run boolean checks on all elements in the vector.
+
+
+We can similarly add, subtract, *, / matrices:
+
+```{r}
+m1 <- matrix(1:4,2,2)
+m2 <- matrix(rep(10,4),2,2)
+m1
+m2
+m1 + m2
+m1 * m2 # element wise *
+m1 / m2
+m1 %*% m2 # true matrix multiplacation
+
+```
+
+
+
+```{r}
+
+#mean(ozone[!is.na(ozone)])
+#hw1[hw1$Ozone > 31 & hw1$Temp>90, ]
+```
+hw1 <- read.csv("hw1_data.csv")
+
+17. mean(hw1$Ozone[!is.na(hw1$Ozone)])
+18. sub <- hw1[hw1$Ozone > 31 & hw1$Temp>90, ]
+mean(sub$Solar.R[!is.na(sub$Solar.R)])
+
+19. sub2 <- hw1[hw1$Month == 6,]
+mean(sub2$Temp[!is.na(sub2$Temp)])
+
+20.
+sub3 <- hw1[hw1$Month == 5,]
+max(sub3$Ozone[!is.na(sub3$Ozone)])
