@@ -1,0 +1,40 @@
+---
+title: "jh2w1p5.3"
+output: html_document
+date: '2022-05-30'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## week 1 (part 5.3)
+### Subsetting - Matrices
+Matrices can be subsetted in the usual way with (i,j) type indices:
+```{r}
+xm1 <- matrix(1:6, 2, 3)
+xm1
+xm1[1,2]
+xm1[2,1]
+```
+Indices can also be missing:
+```{r}
+xm2 <- matrix(1:6, 2, 3)
+xm2
+xm2[1,] # first row returns a vector
+xm2[,2] # second col returns vector
+```
+
+By default, when a single element of a matrix is retrieved,  it is returned as a vector of length 1 rather a 1x1 matrix. This behavior can be turned off by setting *drop* = false. *drop* drops the dimension:
+```{r}
+xm3 <- matrix(1:6, 2, 3)
+xm3
+xm3[1,2, drop = FALSE]
+```
+
+Similarly, subsetting a single column or a single row will give you a vector, not a matrix (by default):
+```{r}
+xm4 <- matrix(1:6, 2, 3)
+xm4
+xm4[1, , drop = FALSE]
+```
