@@ -43,3 +43,61 @@ z
 x
 ```
 
+### Interfaces to the Outside World
+Data are read in using *connection* interfaces. Connections can be made to files (most common) or to other exotic things:
+
+* *file*, opens a connection to a file,
+* *gzfile*, opens a connection to a file compressed with *gzip*,
+* *bzfile*, opens a connection to a file compressed with *bzip2*,
+* *url*, opens a connection to a webpage
+
+Lots of functions (like *read.table*) use a connection to a file behind the scenes
+
+### File Connection
+```{r}
+str(file)
+```
+file Function arguments
+
+* *description* is the name of the file,
+* *open* is code indicating
+  + *r* - read-only
+  + *w* - writing (and initializing) a file,
+  + *a* - appending,
+  + *rb*, *wb*, *ab* - reading, writing or appending in binary mode (Windows)
+  
+Other options are not that important right now
+
+### Connections
+Connections are powerful tools that let you navigate files or other external objects. In practice, we often don't need to deal with the connection interface directly:
+
+```{r}
+con <- file("foo.txt", "r")
+data <- read.csv(con)
+close(con)
+```
+
+is the same as:
+```{r}
+data <- read.csv("foo.txt")
+```
+
+Sometimes it can be useful. Like if you want to read parts of a file:
+
+```{r}
+#con <- gzfile("words.gz")
+#x <- readLines(con, 10)
+#x
+```
+*writeLines* takes a character vector and writes each element one line at a time to a text file.
+
+*readLines* can be useful for reading in lines of webpages
+
+```{r}
+# This might take time
+con <- url("http://jhsph.edu", "r")
+x <- readLines(con)
+#head(x)
+```
+The *url* function is useful for creating a connection to webpages
+

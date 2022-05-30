@@ -419,6 +419,69 @@ z</code></pre>
 <pre class="r"><code>x</code></pre>
 <pre><code>## [1] &quot;foo&quot;</code></pre>
 </div>
+<div id="interfaces-to-the-outside-world" class="section level3">
+<h3>Interfaces to the Outside World</h3>
+<p>Data are read in using <em>connection</em> interfaces. Connections
+can be made to files (most common) or to other exotic things:</p>
+<ul>
+<li><em>file</em>, opens a connection to a file,</li>
+<li><em>gzfile</em>, opens a connection to a file compressed with
+<em>gzip</em>,</li>
+<li><em>bzfile</em>, opens a connection to a file compressed with
+<em>bzip2</em>,</li>
+<li><em>url</em>, opens a connection to a webpage</li>
+</ul>
+<p>Lots of functions (like <em>read.table</em>) use a connection to a
+file behind the scenes</p>
+</div>
+<div id="file-connection" class="section level3">
+<h3>File Connection</h3>
+<pre class="r"><code>str(file)</code></pre>
+<pre><code>## function (description = &quot;&quot;, open = &quot;&quot;, blocking = TRUE, encoding = getOption(&quot;encoding&quot;), 
+##     raw = FALSE, method = getOption(&quot;url.method&quot;, &quot;default&quot;))</code></pre>
+<p>file Function arguments</p>
+<ul>
+<li><em>description</em> is the name of the file,</li>
+<li><em>open</em> is code indicating
+<ul>
+<li><em>r</em> - read-only</li>
+<li><em>w</em> - writing (and initializing) a file,</li>
+<li><em>a</em> - appending,</li>
+<li><em>rb</em>, <em>wb</em>, <em>ab</em> - reading, writing or
+appending in binary mode (Windows)</li>
+</ul></li>
+</ul>
+<p>Other options are not that important right now</p>
+</div>
+<div id="connections" class="section level3">
+<h3>Connections</h3>
+<p>Connections are powerful tools that let you navigate files or other
+external objects. In practice, we often don’t need to deal with the
+connection interface directly:</p>
+<pre class="r"><code>con &lt;- file(&quot;foo.txt&quot;, &quot;r&quot;)
+data &lt;- read.csv(con)</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on &#39;foo.txt&#39;</code></pre>
+<pre class="r"><code>close(con)</code></pre>
+<p>is the same as:</p>
+<pre class="r"><code>data &lt;- read.csv(&quot;foo.txt&quot;)</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on &#39;foo.txt&#39;</code></pre>
+<p>Sometimes it can be useful. Like if you want to read parts of a
+file:</p>
+<pre class="r"><code>#con &lt;- gzfile(&quot;words.gz&quot;)
+#x &lt;- readLines(con, 10)
+#x</code></pre>
+<p><em>writeLines</em> takes a character vector and writes each element
+one line at a time to a text file.</p>
+<p><em>readLines</em> can be useful for reading in lines of webpages</p>
+<pre class="r"><code># This might take time
+con &lt;- url(&quot;http://jhsph.edu&quot;, &quot;r&quot;)
+x &lt;- readLines(con)
+#head(x)</code></pre>
+<p>The <em>url</em> function is useful for creating a connection to
+webpages</p>
+</div>
 </div>
 
 
