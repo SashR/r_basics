@@ -400,6 +400,66 @@ u</code></pre>
 <pre><code>## [1] &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;d&quot;</code></pre>
 </div>
 </div>
+<div id="week-1-part-5.2" class="section level2">
+<h2>week 1 (part 5.2)</h2>
+<div id="subsetting---lists" class="section level3">
+<h3>Subsetting - Lists</h3>
+<p>Little different than vectors, since the double bracket or dollar
+sign operators can also be used.</p>
+<pre class="r"><code>xl &lt;- list(foo=1:4, bar = 0.6)
+xl[1]     # returns list contain name and sequence</code></pre>
+<pre><code>## $foo
+## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>xl[[1]]   # returns just the sequence</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>xl$bar    # returns element whose name matches bar</code></pre>
+<pre><code>## [1] 0.6</code></pre>
+<pre class="r"><code>xl[[&quot;bar&quot;]]</code></pre>
+<pre><code>## [1] 0.6</code></pre>
+<pre class="r"><code>xl[&quot;bar&quot;] # returns a list with value 0.6 named bar</code></pre>
+<pre><code>## $bar
+## [1] 0.6</code></pre>
+<p>You need to use the single bracket operator to extract multiple
+elements of a list:</p>
+<pre class="r"><code>xl2 &lt;- list(foo = 1:4, bar = 0.6, baz = &quot;hello&quot;)
+xl2[c(1, 3)]    # pass vector of 1 and 3 and returns list of elements in these positions</code></pre>
+<pre><code>## $foo
+## [1] 1 2 3 4
+## 
+## $baz
+## [1] &quot;hello&quot;</code></pre>
+<p>The [[]] operator can be used with computed indices, $ operator can
+only be used with literal names</p>
+<pre class="r"><code>xl2 &lt;- list(foo = 1:4, bar = 0.6, baz = &quot;hello&quot;)
+name &lt;- &quot;baz&quot; 
+xl2[[name]]   # computed index of &quot;baz&quot;</code></pre>
+<pre><code>## [1] &quot;hello&quot;</code></pre>
+<pre class="r"><code>xl2$name      # doesnt exist</code></pre>
+<pre><code>## NULL</code></pre>
+<pre class="r"><code>xl2$baz</code></pre>
+<pre><code>## [1] &quot;hello&quot;</code></pre>
+<p>The [[]] operator can take an integer sequence.</p>
+<pre class="r"><code>xl2 &lt;- list(a = list(10, 12, 14), b = c(3.14, 2.81))
+xl2[c(1, 3)]</code></pre>
+<pre><code>## $a
+## $a[[1]]
+## [1] 10
+## 
+## $a[[2]]
+## [1] 12
+## 
+## $a[[3]]
+## [1] 14
+## 
+## 
+## $&lt;NA&gt;
+## NULL</code></pre>
+<pre class="r"><code>xl2[[1]][[3]]</code></pre>
+<pre><code>## [1] 14</code></pre>
+<pre class="r"><code>xl2[[c(2,1)]]</code></pre>
+<pre><code>## [1] 3.14</code></pre>
+</div>
+</div>
 
 
 
