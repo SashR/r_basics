@@ -38,3 +38,45 @@ xm4 <- matrix(1:6, 2, 3)
 xm4
 xm4[1, , drop = FALSE]
 ```
+
+
+## week 1 (part 5.4)
+### Subsetting - Partial Matching
+Partial matching of names is allowed with [[]] and $ operators:
+```{r}
+xl5 <- list(aardvark = 1:5)
+xl5$a
+xl5[["a"]]
+xl5[["a", exact=FALSE]]
+```
+* Useful when working in the command line, makes typing quicker
+
+
+### Subsetting -- Removing missing values
+Removing NA values. Most realistic data has alot of missing values. Hence a common task is removing this. The common pattern is to create logical vector that points out where the na's are so you can remove them by subsetting:
+```{r}
+v1 <- c(12, 21, NA, NA, 34, NA)
+v1
+bad <- is.na(v1)
+bad
+v1[!bad]
+```
+
+What if there are multiple things and you want to take the subset with no missing values:
+```{r}
+v2 <- c(1, 2, NA, 4, NA, 5)
+v2
+v3 <- c("a", "b", NA, "d", NA, NA)
+v3
+good <- complete.cases(v2, v3) # whcich positions for both vectors are non-missing
+good
+v2[good]
+v3[good]
+```
+*complete.cases* can also be used to remove rows from data frames that have missing values:
+```{r}
+# airquality[1:6, ]
+# good <- complete.cases(airquality)
+# airquality[good, ][1:6, ]
+
+```
